@@ -2,6 +2,7 @@
 import Box from '@/components/Box';
 import Container from '@/components/Container'
 import Navbar from '@/components/Navbar';
+import PlayerSection from '@/components/PlayerSection';
 import SideBar from '@/components/SideBar';
 
 import { Button } from "@/components/ui/button";
@@ -27,9 +28,9 @@ export default function Home() {
   return (
     <Container className="">
       <Navbar />
-      <div className='flex gap-x-3 h-full'>
+      <div className="flex gap-x-3 h-full">
         <SideBar />
-        <div className='w-full'>
+        <div className="w-full">
           <Box className="mb-4">
             <div className="flex justify-between">
               <h1 className="text-purple-800 m-4 text-2xl font-semibold">
@@ -50,6 +51,9 @@ export default function Home() {
                 {disabled ? "Updating Data..." : "Update Date"}
               </Button>
             </div>
+          </Box>
+          <Box className=" h-auto min-h-[100vh]">
+            <PlayerSection />
           </Box>
         </div>
       </div>
