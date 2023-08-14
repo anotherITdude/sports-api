@@ -6,12 +6,16 @@ import PlayerSection from '@/components/PlayerSection';
 import SideBar from '@/components/SideBar';
 
 import { Button } from "@/components/ui/button";
-import { useState } from 'react';
+import { Player } from '@prisma/client';
+import { useEffect, useState } from 'react';
 
 
 export default function Home() {
-
+  
+  const [searchQuery, setSearchQuery] = useState("");
   const [disabled, setDisabled] = useState(false);
+  const [players, setPlayers] = useState<Player[]>([]);
+
   const updateData = async () => {
     try {
       setDisabled(true);
@@ -25,9 +29,18 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    async function fetchPlayers() {
+      const response = await fetch("/api/db");
+      const data = await response.json();
+      setPlayers(data);
+    }
+    fetchPlayers();
+  }, []);
+
   return (
     <Container className="">
-      <Navbar />
+      <Navbar onSearchQueryChange={setSearchQuery} />
       <div className="flex gap-x-3 h-full">
         <SideBar />
         <div className="w-full">
@@ -53,7 +66,7 @@ export default function Home() {
             </div>
           </Box>
           <Box className=" h-auto min-h-[100vh]">
-            <PlayerSection />
+            <PlayerSection players={players} searchQuery={searchQuery} />
           </Box>
         </div>
       </div>

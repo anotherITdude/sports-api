@@ -8,7 +8,7 @@ export async function GET(req: Request) {
     if (!userId) {
       return new NextResponse("Unauthorised", { status: 401 });
     }
-    const players = await prismadb.player.findMany({ take: 50 });
+    const players = await prismadb.player.findMany({ take: 100 });
     return NextResponse.json(players);
   } catch (error) {
     console.log("[Players not found]", error);

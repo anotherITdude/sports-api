@@ -5,9 +5,15 @@ import { twMerge } from "tailwind-merge";
 
 interface NavbarProps {
   className?: string;
+  onSearchQueryChange: (query: string) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ className }) => {
+const Navbar: React.FC<NavbarProps> = ({ className, onSearchQueryChange }) => {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value;
+    onSearchQueryChange(query);
+  };
+
   return (
     <div
       className={twMerge(
@@ -25,6 +31,11 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
       >
         Dashboard
       </p>
+      <input
+        className="h-10 rounded-xl p-3 outline-none"
+        placeholder="Search Players"
+        onChange={handleSearchChange}
+      />
       <UserButton afterSignOutUrl="/" />
     </div>
   );

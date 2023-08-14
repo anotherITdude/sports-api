@@ -19,7 +19,6 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ info }) => {
     <Card className="bg-neutral width-full min-w-[200px] text-center">
       <CardHeader>
         <CardTitle>{info.fullname}</CardTitle>
-        <CardDescription>Card Description</CardDescription>
       </CardHeader>
       <CardContent>
         <div>
