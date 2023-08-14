@@ -27,9 +27,9 @@ export default function Home() {
   return (
     <Container className="">
       <Navbar />
-      <div>
+      <div className='flex gap-x-3 h-full'>
         <SideBar />
-        <div>
+        <div className='w-full'>
           <Box className="mb-4">
             <div className="flex justify-between">
               <h1 className="text-purple-800 m-4 text-2xl font-semibold">
